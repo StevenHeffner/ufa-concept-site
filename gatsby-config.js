@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Ufa Concept',
+    title: 'Ufa concept',
   },
   pathPrefix: "/",
   plugins: [

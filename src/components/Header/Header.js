@@ -11,8 +11,8 @@ const MenuContainer = styled.div`
   width: 35%;
   display: flex;
   justify-content: space-between;
-  margin-top: 45px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 18px;
 `
 const LogoContainer = styled.div`
   width: 175px;

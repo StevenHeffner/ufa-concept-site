@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
@@ -10,18 +10,28 @@ const BannerImg = styled.div`
   position: absolute;
   height: 50%;
   width: 100%;
-  top: 115px;
+  top: 85px;
   left: 0px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(${props => props.url});
+  z-index: -1;
+  padding: 110px 60px 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
 `
 const LargeBannerText = styled.div`
   color: #ffffff;
-  font-size: 24px;
+  font-size: 35px;
   font-weight: bold;
+  width: 450px;
+  line-height: 44px;
 `
 const SmallBannerText = styled(LargeBannerText)`
-  font-size: 16px;
+  font-size: 18px;
+  width: 500px
 `
 
 const HomePage = ({ data }) => {
@@ -34,7 +44,16 @@ const HomePage = ({ data }) => {
 
   return (
     <Layout>
-        <BannerImg url={url} />
+        <BannerImg url={url}>
+          <div style={{color: '#ffffff'}}>UFA</div>
+          <LargeBannerText>
+            {large_banner_text}
+          </LargeBannerText>
+          <SmallBannerText>
+            {small_banner_text}
+          </SmallBannerText>
+        </BannerImg>
+
     </Layout>
   )
 }
@@ -42,7 +61,7 @@ const HomePage = ({ data }) => {
 export default HomePage
 
 export const query = graphql`
-  query Prismicquery {
+  query {
     allPrismicHomepage {
       edges {
         node {

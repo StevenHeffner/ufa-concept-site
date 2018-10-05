@@ -31,11 +31,12 @@ const Index = () => (
         }
       }
     `}
-    render={data => (
+    render={data => {
+      return (
       <div>
         <Header data={data.allPrismicNavigation.edges[0].node.data.body} />
       </div>
-    )}
+    )}}
   />
 )
 

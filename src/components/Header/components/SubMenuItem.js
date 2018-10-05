@@ -34,9 +34,12 @@ const SecondLevelLink = styled.div`
 
 class SubMenuItem extends Component {
   render() {
-    const { second_level_link_label } = this.props.data
+    console.log(this.props.data)
+    const { second_level_link_label, second_level_link1 } = this.props.data
     return (
       <Wrapper>
+        {/* <Link to >
+        </Link> */}
         <SecondLevelLink index={this.props.index} length={this.props.length}>
           {second_level_link_label}
         </SecondLevelLink>

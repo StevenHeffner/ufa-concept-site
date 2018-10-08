@@ -2,6 +2,10 @@ const path = require('path')
 
 exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
+  const pageTemplates = {
+    'page': path.resolve('./src/templates/customPage.jsx')
+  }
+
   const pages = await graphql(`
   {
     allPrismicPage {
@@ -16,13 +20,11 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   }
   `)
 
-  const pageTemplates = {
-    'page': path.resolve('./src/templates/customPage.jsx')
-  }
 
   pages.data.allPrismicPage.edges.forEach((edge) => {
+    let url = edge.node.uid.split('_').join('/')
     createPage({
-      path: `/${edge.node.uid}`,
+      path: url,
       component: pageTemplates[edge.node.type],
       context: {
         uid: edge.node.uid

@@ -46,6 +46,9 @@ template {
 }
 a {
   background-color: transparent;
+  color: #000000;
+  text-decoration: none; /* no underline */
+
   -webkit-text-decoration-skip: objects;
 }
 a:active,

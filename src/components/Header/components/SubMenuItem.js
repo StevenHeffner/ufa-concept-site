@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: collum;
+  align-items: center;
 `
 
 const SecondLevelLink = styled.div`
@@ -34,16 +35,15 @@ const SecondLevelLink = styled.div`
 
 class SubMenuItem extends Component {
   render() {
-    console.log(this.props.data)
-    const { second_level_link_label, second_level_link1 } = this.props.data
+    const { second_level_link_label, second_level_link1: {url} } = this.props.data
     return (
-      <Wrapper>
-        {/* <Link to >
-        </Link> */}
-        <SecondLevelLink index={this.props.index} length={this.props.length}>
-          {second_level_link_label}
-        </SecondLevelLink>
-      </Wrapper>
+      <Link to={url}>
+        <Wrapper>
+          <SecondLevelLink index={this.props.index} length={this.props.length}>
+            {second_level_link_label}
+          </SecondLevelLink>
+        </Wrapper>
+      </Link>
     )
   }
 }

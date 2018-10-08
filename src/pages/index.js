@@ -15,7 +15,7 @@ const BannerImg = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(${props => props.url});
   z-index: -1;
-  padding: 110px 60px 
+  padding: 116px 60px 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,7 +61,7 @@ const HomePage = ({ data }) => {
 export default HomePage
 
 export const query = graphql`
-  query {
+  {
     allPrismicHomepage {
       edges {
         node {

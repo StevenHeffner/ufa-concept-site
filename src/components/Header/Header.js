@@ -51,7 +51,7 @@ class Header extends Component {
     const menuItems = this.props.data.map((item, index) => {
       return (
         <MenuItem
-          key={item.id}
+          key={index}
           index={index}
           data={item}
           handleClick={this.handleClick}

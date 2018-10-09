@@ -42,10 +42,9 @@ const SubMenu = styled.div`
 
 class MenuItem extends Component {
   render() {
-    const {
-      primary: { top_level_link_label },
-      items,
-    } = this.props.data
+    
+    
+    const { body: items } = this.props.data.link_to_menu_item.document[0].data
     const arrayLength = items.length - 1
     const subMenuItems = items.map((item, index) => {
       return (
@@ -65,7 +64,7 @@ class MenuItem extends Component {
           index={this.props.index}
           open={this.props.openMenuIndex}
         >
-          {top_level_link_label}
+          {this.props.data.link_to_menu_item.document[0].data.first_level_text}
         </TopLevelLink>
         <SubMenu index={this.props.index} open={this.props.openMenuIndex}>
           {subMenuItems}

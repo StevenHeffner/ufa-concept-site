@@ -6,23 +6,28 @@ import Header from './Header'
 const Index = () => (
   <StaticQuery
     query={graphql`
-      query PrismicQuery {
-        allPrismicNavigation {
+      query {
+        allPrismicMenu {
           edges {
             node {
-              id
               data {
                 body {
-                  id
-                  slice_type
-                  primary {
-                    top_level_link_label
-                  }
                   items {
-                    second_level_link1 {
-                      url
+                    link_to_menu_item {
+                      document {
+                        data {
+                          first_level_text
+                          body {
+                            primary {
+                              link_text
+                            }
+                            items {
+                              _3rd_level_link_text
+                            }
+                          }
+                        }
+                      }
                     }
-                    second_level_link_label
                   }
                 }
               }
@@ -32,11 +37,13 @@ const Index = () => (
       }
     `}
     render={data => {
+      // console.log(data.allPrismicMenu.edges[0].node.data.body[0].items)
       return (
-      <div>
-        <Header data={data.allPrismicNavigation.edges[0].node.data.body} />
-      </div>
-    )}}
+        <div>
+          <Header data={data.allPrismicMenu.edges[0].node.data.body[0].items} />
+        </div>
+      )
+    }}
   />
 )
 

@@ -44,25 +44,37 @@ const ThirdLevelLink = styled.div`
 class SubMenuItem extends Component {
   render() {
     let thirdLevelItems = this.props.data.items.map((item, index) => {
+      // console.log(
+      //   '1:',
+      //   this.props.topLevelRoute,
+      //   '2:',
+      //   this.props.data.primary.second_level_uid,
+      //   '3:',
+      //   item.third_level_uid
+      // )
       return (
-          <Link key={index} to='/'>
-           <div style={{color: '#9F090B'}}>🔥 {item._3rd_level_link_text}</div> 
-          </Link>
-
+        <Link
+          key={index}
+          to={`/${this.props.topLevelRoute}/${
+            this.props.data.primary.second_level_uid
+          }/${item.third_level_uid}`}
+        >
+          <div style={{ color: '#9F090B' }}>
+            <span aria-label="fire" role="img">
+              🔥
+            </span>{' '}
+            {item._3rd_level_link_text}
+          </div>
+        </Link>
       )
     })
-  
-    // const { second_level_link_label, second_level_link1: {url} } = this.props.data
-    console.log(this.props.data.items)
     return (
       <Wrapper>
-          <SecondLevelLink index={this.props.index} length={this.props.length}>
-           {this.props.data.primary.link_text}
-           <ThirdLevelLink>
-             {thirdLevelItems}
-           </ThirdLevelLink>
-          </SecondLevelLink>
-        </Wrapper>
+        <SecondLevelLink index={this.props.index} length={this.props.length}>
+          {this.props.data.primary.link_text}
+          <ThirdLevelLink>{thirdLevelItems}</ThirdLevelLink>
+        </SecondLevelLink>
+      </Wrapper>
     )
   }
 }

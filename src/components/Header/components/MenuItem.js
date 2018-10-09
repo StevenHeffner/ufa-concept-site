@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import SubMenuItem from './SubMenuItem'
 
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 
 const TopLevelLink = styled.div`
   height: 35px;

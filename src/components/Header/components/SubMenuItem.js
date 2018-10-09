@@ -46,14 +46,13 @@ class SubMenuItem extends Component {
     let thirdLevelItems = this.props.data.items.map((item, index) => {
       return (
           <Link key={index} to='/'>
-           <div style={{color: '#9F090B'}}>🔥 {item._3rd_level_link_text}</div> 
+           <div style={{color: '#9F090B'}}><span aria-label="fire" role='img'>🔥</span> {item._3rd_level_link_text}</div> 
           </Link>
 
       )
     })
   
     // const { second_level_link_label, second_level_link1: {url} } = this.props.data
-    console.log(this.props.data.items)
     return (
       <Wrapper>
           <SecondLevelLink index={this.props.index} length={this.props.length}>

@@ -36,7 +36,7 @@ const SmallBannerText = styled(LargeBannerText)`
 
 const HomePage = ({ data }) => {
   const {
-    about_ufa: { text: about_text },
+    // about_ufa: { text: about_text },
     cover_image: { url },
     large_banner_text: { text: large_banner_text },
     small_banner_text: { text: small_banner_text },

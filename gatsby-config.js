@@ -9,6 +9,7 @@ module.exports = {
       options: {
         repositoryName: "ufa-test-2",
         linkResolver: ({ node, key, value }) => doc => {
+          //  console.log(doc.uid)
           return '/'
         },
         htmlSerializer: ({ node, key, value }) => (

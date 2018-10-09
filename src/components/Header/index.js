@@ -17,12 +17,23 @@ const Index = () => (
                       document {
                         data {
                           first_level_text
+                          first_level_uid {
+                            text
+                          }
                           body {
                             primary {
                               link_text
+                              second_level_uid
                             }
                             items {
                               _3rd_level_link_text
+                              third_level_uid
+                              third_level_link {
+                                document {
+                                  type
+                                  uid
+                                }
+                              }
                             }
                           }
                         }

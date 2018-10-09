@@ -53,6 +53,7 @@ class MenuItem extends Component {
           index={index}
           data={item}
           length={arrayLength}
+          topLevelRoute = {this.props.data.link_to_menu_item.document[0].data.first_level_uid.text}
         />
       )
     })

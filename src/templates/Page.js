@@ -28,28 +28,28 @@ const customPage = ({ data }) => {
 
 export default customPage
 
-export const query = graphql`
-  query($uid: String) {
-    allPrismicPage(filter: { uid: { eq: $uid } }) {
-      edges {
-        node {
-          prismicId
-          data {
-            title {
-              text
-            }
-            description {
-              text
-            }
-            bullet_points {
-              text
-            }
-            image {
-              url
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($uid: String) {
+//     allPrismicPage(filter: { uid: { eq: $uid } }) {
+//       edges {
+//         node {
+//           prismicId
+//           data {
+//             title {
+//               text
+//             }
+//             description {
+//               text
+//             }
+//             bullet_points {
+//               text
+//             }
+//             image {
+//               url
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

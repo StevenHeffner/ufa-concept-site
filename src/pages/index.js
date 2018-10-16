@@ -7,14 +7,13 @@ const BannerImg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(${props => props.url});
   position: absolute;
   height: 50%;
   width: 100%;
   top: 85px;
   left: 0px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(${props => props.url});
-  z-index: -1;
   padding: 116px 60px 
   display: flex;
   flex-direction: column;

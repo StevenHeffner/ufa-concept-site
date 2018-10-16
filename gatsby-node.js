@@ -1,10 +1,10 @@
 const path = require('path')
+const fetch = require('apollo-fetch')
 
 exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
   const pageTemplates = {
     page: path.resolve('./src/templates/Page.js'),
-
   }
 
   const navData = await graphql(`
@@ -34,6 +34,65 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
                               document {
                                 type
                                 uid
+                                data {
+                                  body {
+                                    ... on PrismicPageBodyTeam {
+                                      slice_type
+                                      prismicId
+                                      primary {
+                                        team_section {
+                                          text
+                                        }
+                                      }
+                                      items {
+                                        first_and_lastname {
+                                          text
+                                        }
+                                        position {
+                                          text
+                                        }
+                                        portrait {
+                                          url
+                                        }
+                                      }
+                                    }
+                                    ... on PrismicPageBodyImageGallery {
+                                      slice_type
+                                      prismicId
+                                      primary {
+                                        name_of_the_gallery {
+                                          text
+                                        }
+                                      }
+                                      items {
+                                        gallery_image {
+                                          url
+                                        }
+                                      }
+                                    }
+                                    ... on PrismicPageBodyBannerWithCaption {
+                                      slice_type
+                                      prismicId
+                                      primary {
+                                        description {
+                                          text
+                                        }
+                                        title_of_banner {
+                                          text
+                                        }
+                                        image_banner {
+                                          url
+                                        }
+                                        button_link {
+                                          url
+                                        }
+                                        button_label {
+                                          text
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -60,6 +119,8 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
 
           secondLevelItem.items.forEach(thirdLevelItem => {
             let third_level_uid = thirdLevelItem.third_level_uid
+            let third_level_slice_data =
+              thirdLevelItem.third_level_link.document[0].data.body
 
             createPage({
               path: `/${first_level_uid}/${second_level_uid}/${third_level_uid}`,
@@ -67,7 +128,8 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
                 pageTemplates[thirdLevelItem.third_level_link.document[0].type],
               context: {
                 uid: thirdLevelItem.third_level_link.document[0].uid,
-              }
+                sliceData: third_level_slice_data,
+              },
             })
           })
         }

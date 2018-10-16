@@ -5,16 +5,24 @@ import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 83px;
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
+  background: #ffffff;
+  top: 0;
+  left: 0;
+  padding: 0px 60px;
+  position: fixed;
+  z-index: 1;
+  box-shadow: ${props => props.isTop ? 'none' : '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);'}
+  transition: box-shadow .2s ease-in-out
 `
 const MenuContainer = styled.div`
   width: 35%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between'
   margin-top: 30px;
-  margin-bottom: 18px;
 `
 const LogoContainer = styled.div`
   width: 175px;
@@ -28,7 +36,7 @@ const LogoImage = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(https://www.redlionfire.org/wp-content/uploads/2015/11/fireman-logo.png)
+  background-image: url(https://www.redlionfire.org/wp-content/uploads/2015/11/fireman-logo.png);
 `
 const LogoText = styled.div`
   color: black;
@@ -40,7 +48,20 @@ const LogoText = styled.div`
 class Header extends Component {
   state = {
     openMenuIndex: null,
+    isTop: true,
   }
+
+  componentDidMount = () => {
+    document.addEventListener('scroll', this.onScroll)
+  }
+  
+  onScroll = () => {
+    const isTop = window.scrollY < 3
+    if (isTop !== this.state.isTop) {
+      this.setState({isTop})
+    }
+  }
+
   handleClick = index => {
     this.setState({
       openMenuIndex: index === this.state.openMenuIndex ? null : index,
@@ -60,7 +81,7 @@ class Header extends Component {
       )
     })
     return (
-      <Wrapper>
+      <Wrapper id="nav" isTop={this.state.isTop}>
         <Link to="/">
           <LogoContainer>
             <LogoImage />

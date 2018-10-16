@@ -42,8 +42,6 @@ const SubMenu = styled.div`
 
 class MenuItem extends Component {
   render() {
-    
-    
     const { body: items } = this.props.data.link_to_menu_item.document[0].data
     const arrayLength = items.length - 1
     const subMenuItems = items.map((item, index) => {

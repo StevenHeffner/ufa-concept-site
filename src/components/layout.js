@@ -27,9 +27,9 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <div style = {{padding: "0px 60px"}}>
+        <div style = {{padding: '0px 60px', overflowY: 'scroll', display: 'flex', flexDirection: 'column'}}>
           <Header />
-          <div>{children}</div>
+          <div id = 'content' style={{marginTop: '83px', zIndex: 0 }}>{children}</div>
         </div>
       </>
     )}

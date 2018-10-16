@@ -1,55 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import Layout from '../components/layout'
-import { graphql } from 'gatsby'
+import ImageGallery from '../components/slices/ImageGallery/ImageGallery'
+import Team from '../components/slices/Team/Team'
 
-const Image = styled.div`
-  width: 300px;
-  height: 300px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(${props => props.img})
-`
 
-const customPage = ({ data }) => {
-  const {
-    title: { text: title_text },
-    image: { url },
-  } = data.allPrismicPage.edges[0].node.data
+const customPage = props => {
+  let { sliceData } = props.pathContext
 
-  return (
-    <Layout>
-      <h1>{title_text}</h1>
-      <Image img={url}/>
-    </Layout>
-  )
+  let content = sliceData.map(slice => {
+    switch (slice.slice_type) {
+      case 'image_gallery':
+        return <ImageGallery key={slice.prismicId} data={slice}/>
+      case 'team':
+        return <Team key={slice.prismicId} data={slice}/>
+      default:
+        return null
+    }
+  })
+  return <Layout>{content}</Layout>
 }
 
 export default customPage
-
-// export const query = graphql`
-//   query($uid: String) {
-//     allPrismicPage(filter: { uid: { eq: $uid } }) {
-//       edges {
-//         node {
-//           prismicId
-//           data {
-//             title {
-//               text
-//             }
-//             description {
-//               text
-//             }
-//             bullet_points {
-//               text
-//             }
-//             image {
-//               url
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

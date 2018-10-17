@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import SlideShow from 'react-image-show'
-import { Wrapper } from '../sliceStyles'
+import { Wrapper, SliceTitleText } from '../sliceStyles'
 
 
 const ImageGallery = props => {
@@ -11,7 +11,7 @@ const ImageGallery = props => {
   })
   return (
     <Wrapper>
-      <h1>{galleryNameText}</h1>
+      <SliceTitleText>{galleryNameText}</SliceTitleText>
       <SlideShow images={images} infinite={true} thumbnails={true} />
     </Wrapper>
   )

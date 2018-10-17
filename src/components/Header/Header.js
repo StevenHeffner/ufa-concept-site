@@ -54,9 +54,9 @@ class Header extends Component {
   componentDidMount = () => {
     document.addEventListener('scroll', this.onScroll)
   }
-  
+
   onScroll = () => {
-    const isTop = window.scrollY < 3
+    const isTop = window.scrollY < 1
     if (isTop !== this.state.isTop) {
       this.setState({isTop})
     }

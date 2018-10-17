@@ -28,10 +28,10 @@ const Wrapper = styled.div`
   width: 100%;
 `
 const SubMenu = styled.div`
-  visibility: ${props => (props.index === props.open ? `visibile` : `hidden`)}
+  opacity: ${props => (props.index === props.open ? `1` : `0`)}
+  transition: opacity .1s linear
   position: absolute;
   width: 165px;
-  max-height: 300px
   left: -29px;
   background: #ffffff;
   border-radius: 5px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Wrapper } from '../sliceStyles'
+import { Wrapper, SliceTitleText } from '../sliceStyles'
 
 const Container = styled.div`
   width: 100%;
@@ -70,7 +70,7 @@ const Team = ({ data }) => {
   })
   return (
     <Wrapper>
-      <h1>{teamName}</h1>
+      <SliceTitleText>{teamName}</SliceTitleText>
       <Container>{team}</Container>
     </Wrapper>
   )

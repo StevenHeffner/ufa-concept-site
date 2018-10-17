@@ -2,12 +2,12 @@ module.exports = {
   siteMetadata: {
     title: 'Ufa concept',
   },
-  pathPrefix: "/",
+  pathPrefix: '/',
   plugins: [
     {
-      resolve: "gatsby-source-prismic",
+      resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: "ufa-test-2",
+        repositoryName: 'ufa-test-2',
         linkResolver: ({ node, key, value }) => doc => {
           //  console.log(doc.uid)
           return '/'
@@ -17,8 +17,8 @@ module.exports = {
           element,
           content,
           children
-          ) => {}
-      }
+        ) => {},
+      },
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
